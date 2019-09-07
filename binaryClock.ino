@@ -1,6 +1,6 @@
 #include <Wire.h>
 
-#define DEBUG 1
+#define DEBUG 0
 
 struct Time {
   uint8_t hour;
@@ -90,21 +90,18 @@ class Rtc { // DS1307
     uint8_t _bcd2dec(uint8_t value) {
       return (value >> 4)*10 + (value & 0x0f);
     }
- // const byte _address = 0x68; // I2C address
-  const int _address = 0b1101000;
-  uint8_t _hour, _minute;
+    const int _address = 0x68; // I2C address
+    uint8_t _hour, _minute;
 };
 
-//#if DEBUG == 1
+#if DEBUG == 1
 void serial_print(Time time) {
   Serial.print(time.hour);
   Serial.print(':');
   Serial.print(time.minute);
-  Serial.print(':');
-  Serial.print(time.second);
   Serial.println();
 }
-//#endif
+#endif
 
 // Globals defginition
 ShiftRegister shiftRegister(8, 11, 12);
@@ -123,17 +120,13 @@ void setup() {
   #if DEBUG == 1
   printf("RTC initialized");
   #endif
-  struct Time time = {
-    21, 12, 32
-  };
-  rtc.set_time(time);
 }
 
 void loop() {
   static struct Time time;
   static uint8_t last_minute;
   rtc.get_time(&time);
-  if (time.minute != last_minute) {// Only display new time when needed
+  if (time.minute != last_minute) { // Only display new time when needed
     #if DEBUG == 1
     Serial.println("New time displayed");
     #endif
