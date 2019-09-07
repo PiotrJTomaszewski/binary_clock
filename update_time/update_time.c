@@ -8,15 +8,15 @@
 
 typedef unsigned char BYTE;
 int main(int argc, char *argv[]) {
-    char *device = "/dev/binClock";
+    char *device = "/dev/ttyUSB0";
     int opt;
     while ((opt = getopt(argc, argv, "hd:")) != -1) {
         switch(opt) {
-            default: 
+            default:
             case 'h':
                 puts("Clock time updater for my custom binary clock");
                 puts("Options:");
-                puts("-d\tSerial port to use. Can be ommited, defaults to /dev/binClock");
+                puts("-d\tSerial port to use. Can be ommited, defaults to /dev/ttyUSB0");
                 puts("-h\tDisplay this message");
                 return 0;
             case 'd':
