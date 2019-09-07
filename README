@@ -1,3 +1,3 @@
 Code for my custom binary clock that I made a few years back while in high school. Back then I've used an RTC library that I found online, it wasn't working properly so the clock spent a few years collecting dust on a shelf. Recently, I found my old source code and decided to rewrite it. I've ditched that library and wrote my custom class for rtc. And now it works like a charm. :)
 
-The original clock updater was a GUI app written in C# on Windows but since then I've switched to Linux so I rewrote that into a command line tool.
+The original clock updater was a GUI app written in C# on Windows but since then I've switched to Linux so I rewrote that into a command-line tool.
