@@ -112,13 +112,13 @@ void setup() {
   Wire.begin();
   bool rtc_initialized;
   #if DEBUG == 1
-  printf("Initializing RTC");
+  Serial.println("Initializing RTC");
   #endif
   while (!rtc_initialized) {
     rtc_initialized = rtc.init();
   }
   #if DEBUG == 1
-  printf("RTC initialized");
+  Serial.println("RTC initialized");
   #endif
 }
 
